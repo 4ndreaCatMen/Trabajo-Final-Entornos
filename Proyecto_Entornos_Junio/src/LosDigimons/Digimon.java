@@ -34,9 +34,8 @@ public class Digimon {
         }
         return 0;
     }
-    
-// Sumo mas metodos de ataque porque me lo he tomado en serio queriendo contar con los ataques de los digimons principales
-    
+
+    // Nuevos métodos de ataque
     public int ataque3() {
         return 3 * puntosAtaque;
     }
@@ -61,6 +60,8 @@ public class Digimon {
         return 8 * puntosAtaque;
     }
 
+    // Aqui los metodos get y un solo set para los puntos de salud porque necesita actualizarse cada vez que hay una batalla
+    
     public String getNombre() {
         return nombre;
     }
