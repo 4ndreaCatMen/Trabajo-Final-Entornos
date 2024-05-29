@@ -1,6 +1,4 @@
 package LosDigimons;
-import java.util.List;
-import java.util.Scanner;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -35,7 +33,7 @@ public class BatallaDigital {
             switch (accion) {
                 case 1:
                     dano = digimonElegido.ataque1();
-                    System.out.println(digimonElegido.getNombre() + " realiza Llamarada Bebé causando " + dano + " puntos de dano.");
+                    System.out.println(digimonElegido.getNombre() + " realiza Llamarada Baby causando " + dano + " puntos de dano.");
                     break;
                 case 2:
                     dano = digimonElegido.ataque2();
@@ -68,18 +66,19 @@ public class BatallaDigital {
                     System.out.println("Opcion no valida");
                     continue;
             }
-            enemigo.setPuntosSalud(Math.max(enemigo.getPuntosSalud() - dano, 0)); // Asegura que la salud no sea negativa
+
+            enemigo.setPuntosSalud(Math.max(enemigo.getPuntosSalud() - dano, 0)); // para que el daño causado no sea negativo, si la salud es 0 será derrotado
 
             System.out.println("La salud del enemigo " + enemigo.getNombre() + " es ahora " + enemigo.getPuntosSalud() + ".");
-// El enemigo ha sido derrotado si la salud llega a 0
+
             if (enemigo.getPuntosSalud() <= 0) {
-                
+                // El enemigo ha sido derrotado
                 if (enemigo.getPuntosSalud() <= 20) {
                     System.out.println("Has derrotado a " + enemigo.getNombre() + "!");
-                    return; // Salir de la batalla si se captura
+                    return; // En el caso de que el digimon sea capturado se vuelve a iniciar otra batalla
                 } else {
                     System.out.println("Has derrotado a " + enemigo.getNombre() + "!");
-                    return; // Salir de la batalla si el enemigo ha sido derrotado
+                    return; // Si se derrota al digimon enemigo también se vuelve a iniciar otra batalla
                 }
             } else {
                 // Opciones para continuar la batalla
@@ -87,16 +86,17 @@ public class BatallaDigital {
                 System.out.println("1. Atacar de nuevo");
                 System.out.println("2. Intentar capturar");
 
-                // Si se pulsa un numero que no es ni el 1 ni 2 se muestra el mensaje de error
+                // bucle while para la comprobación de que la insercción del dato es la correcta
                 while (true) {
                     decision = scanner.nextInt();
                     if (decision == 1 || decision == 2) {
-                        break; // Salir del bucle si la entrada es válida
+                        break; // El bucle se rompe si se elige las opciones que se muestran por pantalla, es decir, 1 y 2
                     } else {
-                        System.out.println("Error, prueba otra vez"); // Mensaje de error si la entrada no es válida
-                        scanner.nextLine(); 
+                        System.out.println("Error, prueba otra vez"); // De no cumplirse lo anterior de mostrará por pantalla ese mensaje
+                        scanner.nextLine();
+                    }
                 }
-// cuando la salud es mayor a 20 aunque te de la posibilidad no se podra capturar
+
                 if (decision == 2) {
                     if (enemigo.getPuntosSalud() <= 20) {
                         domador.capturar(enemigo);
@@ -106,10 +106,9 @@ public class BatallaDigital {
                     }
                 } else {
                     System.out.println("Has derrotado a " + enemigo.getNombre() + "!");
-                    return; // Salir de la batalla si el enemigo ha sido derrotado
+                    return; // Salir de la batalla si el digimon enemigo ha sido derrotado
                 }
             }
         }
     }
-
 }
