@@ -35,5 +35,13 @@ import Pruebas_digimons.Digimons;
 	            System.out.println("No se puede unir");
 	        }
 	    }
+	    	// listado del equipo digimon con sus nombres
 
-}
+	    public List<Digimon> getEquipo() {
+	        return equipo;
+	    }
+
+	    public String getNombre() {
+	        return nombre;
+	    }
+	}
