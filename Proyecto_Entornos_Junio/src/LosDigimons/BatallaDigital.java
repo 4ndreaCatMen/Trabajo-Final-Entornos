@@ -3,20 +3,42 @@ package LosDigimons;
 import java.util.Random;
 import java.util.Scanner;
 
-public class BatallaDigital {
-    private Domador domador;
-    private Digimon digimonElegido;
-    private Digimon enemigo;
+/**
+ * Clase que simula una batalla digital entre un domador y un Digimon enemigo.
+ * Controla el desarrollo de la pelea y permite al jugador seleccionar ataques.
+ * 
+ * @author Andrea
+ */
 
+
+
+public class BatallaDigital {
+    private Domador domador; // El domador que participa en la batalla
+    private Digimon digimonElegido; // El Digimon elegido por el domador para pelear
+    private Digimon enemigo; // El Digimon enemigo que se enfrenta al digimon elegido por el domador/a
+
+    /**
+     * Constructor de la clase BatallaDigital.
+     * 
+     * @param domador El domador que participa en la batalla.
+     * @param digimonElegido El Digimon elegido por el domador para pelear.
+     */
     public BatallaDigital(Domador domador, Digimon digimonElegido) {
-        this.domador = domador;
-        this.digimonElegido = digimonElegido;
-        this.enemigo = domador.crearDigimonAleatorio();
+    	this.domador = domador; // Guardamos el domador que participa en la batalla
+        this.digimonElegido = digimonElegido; // Guardamos el Digimon elegido por el domador
+        this.enemigo = domador.crearDigimonAleatorio(); // Creamos un Digimon enemigo aleatorio para la batalla
     }
 
+    /**
+     * Simula el desarrollo de la batalla.
+     */
+    
     public void pelea() {
         Scanner scanner = new Scanner(System.in);
         int decision = 0;
+        
+        // Todas las opciones de ataque que he añadido porque he querido y son ataques de verdad de los Digimons
+
         while (enemigo.getPuntosSalud() > 0) {
             System.out.println("Elige un ataque:");
             System.out.println("1. Llamarada Baby");
@@ -31,6 +53,9 @@ public class BatallaDigital {
 
             int dano = 0;
             switch (accion) {
+            
+            // Se realiza un ataque dependiendo de la opción elegida por el usuario
+
                 case 1:
                     dano = digimonElegido.ataque1();
                     System.out.println(digimonElegido.getNombre() + " realiza Llamarada Baby causando " + dano + " puntos de dano.");
@@ -81,7 +106,8 @@ public class BatallaDigital {
                     return; // Si se derrota al digimon enemigo también se vuelve a iniciar otra batalla
                 }
             } else {
-                // Opciones para continuar la batalla
+            	
+                // El enemigo sigue en la batalla, se muestra la opción para continuar
                 System.out.println("Que quieres hacer ahora?");
                 System.out.println("1. Atacar de nuevo");
                 System.out.println("2. Intentar capturar");
@@ -97,16 +123,18 @@ public class BatallaDigital {
                     }
                 }
 
+             // Se realiza la acción según la decisión del usuario
+                
                 if (decision == 2) {
                     if (enemigo.getPuntosSalud() <= 20) {
                         domador.capturar(enemigo);
-                        return; // Salir de la batalla si se captura
+                        return; // Se sale de la batalla si se captura al enemigo
                     } else {
                         System.out.println("No se puede unir");
                     }
                 } else {
                     System.out.println("Has derrotado a " + enemigo.getNombre() + "!");
-                    return; // Salir de la batalla si el digimon enemigo ha sido derrotado
+                    return; // Se sale de la batalla si el enemigo es derrotado
                 }
             }
         }
