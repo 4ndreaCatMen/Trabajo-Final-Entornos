@@ -1,4 +1,5 @@
 package LosDigimons;
+
 import java.util.Scanner;
 
 public class Principal {
