@@ -34,5 +34,68 @@ public class Digimon {
         }
         return 0;
     }
+    
+// Sumo mas metodos de ataque porque me lo he tomado en serio queriendo contar con los ataques de los digimons principales
+    
+    public int ataque3() {
+        return 3 * puntosAtaque;
+    }
+
+    public int ataque4() {
+        return 4 * puntosAtaque;
+    }
+
+    public int ataque5() {
+        return 5 * puntosAtaque;
+    }
+
+    public int ataque6() {
+        return 6 * puntosAtaque;
+    }
+
+    public int ataque7() {
+        return 7 * puntosAtaque;
+    }
+
+    public int ataque8() {
+        return 8 * puntosAtaque;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public int getPuntosSalud() {
+        return puntosSalud;
+    }
+
+    public void setPuntosSalud(int puntosSalud) {
+        this.puntosSalud = puntosSalud;
+    }
+
+    public int getDp1() {
+        return dp1;
+    }
+
+    public int getDp2() {
+        return dp2;
+    }
 }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
 
